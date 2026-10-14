@@ -1,3 +1,3 @@
 release: bundle exec rails db:prepare
-web: bundle exec bin/thrust bin/rails server
+web: bundle exec puma -C config/puma.rb
 worker: bundle exec rake solid_queue:start
