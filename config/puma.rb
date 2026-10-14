@@ -20,3 +20,7 @@ port ENV.fetch("PORT", 5100)
 
 # To restart: `bin/pwpush restart`
 plugin :tmp_restart
+
+# SafePass: run Solid Queue (push expiry and cleanup jobs) inside the web dyno,
+# so Heroku needs no separate worker dyno.
+plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]
