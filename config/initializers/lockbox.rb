@@ -27,6 +27,6 @@ Lockbox.master_key = ENV.fetch("PWPUSH_MASTER_KEY", "749b1022e1cb83fb04f3022eaca
 
 if ENV.key?("PWPUSH_MASTER_KEY_PREVIOUS")
   ENV.fetch("PWPUSH_MASTER_KEY_PREVIOUS").split(",").each do |previous_key|
-    Lockbox.default_options[:previous_versions] << {master_key: previous_key}
+    (Lockbox.default_options[:previous_versions] ||= []) << {master_key: previous_key}
   end
 end
