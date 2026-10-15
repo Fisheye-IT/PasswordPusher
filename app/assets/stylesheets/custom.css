@@ -37,20 +37,37 @@
   --bs-border-radius-lg: 0.8rem;
 }
 
-[data-bs-theme="dark"] {
+/* Dark mode. Upstream's dark theme is driven by --pwp-* tokens on html[data-bs-theme=dark],
+   so restate them in Fisheye colours here (same selector, loaded later, so ours win). */
+html[data-bs-theme="dark"] {
+  --pwp-surface-0: #0a1f23;
+  --pwp-surface-1: #10292e;
+  --pwp-surface-2: #163339;
+  --pwp-surface-3: #1d3e45;
+  --pwp-border: #24474e;
+  --pwp-border-strong: #31585f;
+  --pwp-text: #d3e1e3;
+  --pwp-text-strong: #f0f6f7;
+  --pwp-text-muted: #9db3b7;
+  --pwp-text-subtle: #7f989d;
+  --pwp-accent: #2babb5;
+  --pwp-accent-hover: #5fc9d1;
+  --pwp-accent-text: #5fc9d1;
+  --pwp-accent-text-hover: #8fdde3;
+  --pwp-accent-ring: rgba(43, 171, 181, 0.35);
   --bs-body-font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --bs-body-bg: #0a1f23;
-  --bs-body-color: #e3ecee;
-  --bs-tertiary-bg: #10292e;
-  --bs-secondary-bg: #143238;
-  --bs-border-color: #24474e;
-  --bs-primary: var(--sp-aqua);
   --bs-primary-rgb: 43, 171, 181;
-  --bs-link-color: #5fc9d1;
+  --bs-body-bg-rgb: 10, 31, 35;
+  --bs-body-color-rgb: 211, 225, 227;
+  --bs-emphasis-color-rgb: 240, 246, 247;
+  --bs-secondary-color-rgb: 157, 179, 183;
+  --bs-tertiary-color-rgb: 127, 152, 157;
+  --bs-secondary-bg-rgb: 16, 41, 46;
+  --bs-tertiary-bg-rgb: 29, 62, 69;
+  --bs-light-rgb: 16, 41, 46;
   --bs-link-color-rgb: 95, 201, 209;
-  --bs-link-hover-color: #8fdde3;
   --bs-link-hover-color-rgb: 143, 221, 227;
-  --bs-focus-ring-color: rgba(43, 171, 181, 0.45);
+  --bs-focus-ring-color: rgba(43, 171, 181, 0.35);
 }
 
 body {
@@ -59,6 +76,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+  font-family: var(--bs-body-font-family);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
@@ -76,7 +94,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
   --bs-btn-focus-shadow-rgb: 43, 171, 181;
   font-weight: 600;
 }
-[data-bs-theme="dark"] .btn-primary {
+html[data-bs-theme="dark"] .btn-primary {
   --bs-btn-color: #062227;
   --bs-btn-bg: var(--sp-aqua);
   --bs-btn-border-color: var(--sp-aqua);
@@ -90,7 +108,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
   --bs-btn-disabled-bg: var(--sp-aqua);
 }
 .bg-primary { background-color: var(--sp-teal) !important; }
-[data-bs-theme="dark"] .bg-primary { background-color: var(--sp-aqua) !important; color: #062227 !important; }
+html[data-bs-theme="dark"] .bg-primary { background-color: var(--sp-aqua) !important; color: #062227 !important; }
 
 /* Forms */
 .form-control:focus,
@@ -104,8 +122,8 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 }
 .form-range::-webkit-slider-thumb { background-color: var(--sp-aqua-ink); }
 .form-range::-moz-range-thumb { background-color: var(--sp-aqua-ink); }
-textarea.form-control { background-color: #fff; }
-[data-bs-theme="dark"] textarea.form-control { background-color: var(--bs-tertiary-bg); }
+html:not([data-bs-theme="dark"]) textarea.form-control { background-color: #fff; }
+html[data-bs-theme="dark"] textarea.form-control { background-color: var(--pwp-surface-1); }
 
 /* Only the Passwords tab is enabled, so a one-item tab bar is just noise. */
 .nav-underline:has(> .nav-item:only-child) { display: none; }
@@ -177,7 +195,7 @@ textarea.form-control { background-color: #fff; }
   border-radius: 1rem;
   box-shadow: 0 10px 30px rgba(13, 65, 75, 0.12);
 }
-[data-bs-theme="dark"] .sp-card {
+html[data-bs-theme="dark"] .sp-card {
   background: var(--bs-tertiary-bg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
@@ -204,7 +222,7 @@ textarea.form-control { background-color: #fff; }
 :root:not([data-bs-theme="dark"]) .sp-card {
   background-color: #fff;
 }
-[data-bs-theme="dark"] form .border.rounded-3 { background-color: var(--bs-tertiary-bg); }
+html[data-bs-theme="dark"] form .border.rounded-3 { background-color: var(--bs-tertiary-bg); }
 
 .btn-outline-primary {
   --bs-btn-color: var(--sp-teal);
@@ -217,7 +235,7 @@ textarea.form-control { background-color: #fff; }
   --bs-btn-active-border-color: var(--sp-teal-deep);
   --bs-btn-focus-shadow-rgb: 43, 171, 181;
 }
-[data-bs-theme="dark"] .btn-outline-primary {
+html[data-bs-theme="dark"] .btn-outline-primary {
   --bs-btn-color: var(--sp-aqua);
   --bs-btn-border-color: var(--sp-aqua);
   --bs-btn-hover-color: #062227;
