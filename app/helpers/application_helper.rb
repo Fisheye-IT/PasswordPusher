@@ -21,14 +21,15 @@ module ApplicationHelper
   end
 
   # Set the HTML title for the page with a trailing site identifier.
-  def title(content)
-    content_for(:html_title) { "#{content} | #{Settings.brand.title}" }
+  # SafePass: every tab reads just the brand title ("SafePass by Fisheye").
+  def title(_content)
+    content_for(:html_title) { Settings.brand.title }
   end
 
   # Set the HTML title for the page _without_ the trailing site identifier.
   # Used in Password#show/show_expired to hide Password Pusher branding
-  def plain_title(content)
-    content_for(:html_title) { content }
+  def plain_title(_content)
+    content_for(:html_title) { Settings.brand.title }
   end
 
   # Used in the topname to set the active tab

@@ -1,14 +1,198 @@
 /*
- * This file is intentionally left blank.
- *
- * Use file file to place CSS overrides in.  It is loaded last and will take precedence.
+ * SafePass by Fisheye - brand layer over upstream Password Pusher.
+ * Loaded last (see application.bootstrap.scss), so it overrides Bootstrap and the theme.
+ * Palette and type follow fisheye.nz: deep teal, aqua, a single orange accent, Montserrat.
  */
 
-/*
- Example:
-
-.container {
-    color: #000;
-    background-color: #1acaca;
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin.woff2") format("woff2");
 }
-*/
+
+:root {
+  --sp-teal: #0d414b;
+  --sp-teal-deep: #082e35;
+  --sp-aqua: #2babb5;
+  --sp-aqua-ink: #1d7f87;
+  --sp-orange: #f26522;
+  --sp-mist: #f3f6f6;
+}
+
+:root,
+[data-bs-theme="light"] {
+  --bs-body-font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --bs-body-bg: var(--sp-mist);
+  --bs-body-color: #1f2d30;
+  --bs-primary: var(--sp-teal);
+  --bs-primary-rgb: 13, 65, 75;
+  --bs-link-color: var(--sp-aqua-ink);
+  --bs-link-color-rgb: 29, 127, 135;
+  --bs-link-hover-color: var(--sp-teal);
+  --bs-link-hover-color-rgb: 13, 65, 75;
+  --bs-focus-ring-color: rgba(43, 171, 181, 0.35);
+  --bs-border-radius: 0.6rem;
+  --bs-border-radius-lg: 0.8rem;
+}
+
+[data-bs-theme="dark"] {
+  --bs-body-font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --bs-body-bg: #0a1f23;
+  --bs-body-color: #e3ecee;
+  --bs-tertiary-bg: #10292e;
+  --bs-secondary-bg: #143238;
+  --bs-border-color: #24474e;
+  --bs-primary: var(--sp-aqua);
+  --bs-primary-rgb: 43, 171, 181;
+  --bs-link-color: #5fc9d1;
+  --bs-link-color-rgb: 95, 201, 209;
+  --bs-link-hover-color: #8fdde3;
+  --bs-link-hover-color-rgb: 143, 221, 227;
+  --bs-focus-ring-color: rgba(43, 171, 181, 0.45);
+}
+
+body {
+  font-family: var(--bs-body-font-family);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Buttons */
+.btn-primary {
+  --bs-btn-bg: var(--sp-teal);
+  --bs-btn-border-color: var(--sp-teal);
+  --bs-btn-hover-bg: var(--sp-aqua-ink);
+  --bs-btn-hover-border-color: var(--sp-aqua-ink);
+  --bs-btn-active-bg: var(--sp-teal-deep);
+  --bs-btn-active-border-color: var(--sp-teal-deep);
+  --bs-btn-disabled-bg: var(--sp-teal);
+  --bs-btn-disabled-border-color: var(--sp-teal);
+  --bs-btn-focus-shadow-rgb: 43, 171, 181;
+  font-weight: 600;
+}
+[data-bs-theme="dark"] .btn-primary {
+  --bs-btn-color: #062227;
+  --bs-btn-bg: var(--sp-aqua);
+  --bs-btn-border-color: var(--sp-aqua);
+  --bs-btn-hover-color: #062227;
+  --bs-btn-hover-bg: #5fc9d1;
+  --bs-btn-hover-border-color: #5fc9d1;
+  --bs-btn-active-color: #062227;
+  --bs-btn-active-bg: #8fdde3;
+  --bs-btn-active-border-color: #8fdde3;
+  --bs-btn-disabled-color: #062227;
+  --bs-btn-disabled-bg: var(--sp-aqua);
+}
+.bg-primary { background-color: var(--sp-teal) !important; }
+[data-bs-theme="dark"] .bg-primary { background-color: var(--sp-aqua) !important; color: #062227 !important; }
+
+/* Forms */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--sp-aqua);
+  box-shadow: 0 0 0 0.25rem var(--bs-focus-ring-color);
+}
+.form-check-input:checked {
+  background-color: var(--sp-aqua-ink);
+  border-color: var(--sp-aqua-ink);
+}
+.form-range::-webkit-slider-thumb { background-color: var(--sp-aqua-ink); }
+.form-range::-moz-range-thumb { background-color: var(--sp-aqua-ink); }
+textarea.form-control { background-color: #fff; }
+[data-bs-theme="dark"] textarea.form-control { background-color: var(--bs-tertiary-bg); }
+
+/* Only the Passwords tab is enabled, so a one-item tab bar is just noise. */
+.nav-underline:has(> .nav-item:only-child) { display: none; }
+.nav-underline .nav-link.active {
+  color: var(--bs-primary);
+  border-bottom-color: var(--sp-orange);
+}
+
+/* Masthead */
+.sp-masthead {
+  background: var(--sp-teal);
+  color: #fff;
+  border-bottom: 3px solid var(--sp-aqua);
+}
+.sp-brand { color: #fff; }
+.sp-brand:hover { color: #fff; }
+.sp-mark { border-radius: 10px; }
+.sp-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.sp-by {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0;
+}
+.sp-tagline {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+.sp-masthead .btn {
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: rgba(255, 255, 255, 0.35);
+  --bs-btn-hover-color: var(--sp-teal);
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-border-color: #fff;
+}
+
+/* Footer */
+.sp-footer {
+  background: var(--sp-teal);
+  color: rgba(255, 255, 255, 0.72);
+}
+.sp-footer a,
+.sp-footer .text-muted { color: rgba(255, 255, 255, 0.85) !important; }
+.sp-footer a:hover { color: #fff !important; }
+.sp-wordmark { height: 18px; width: auto; display: block; }
+
+/* Recipient pages: reveal, secret, expired */
+.sp-band {
+  background: var(--sp-teal);
+  border-bottom: 3px solid var(--sp-aqua);
+}
+.sp-mark-sm { border-radius: 6px; }
+.sp-band-name {
+  font-weight: 700;
+  color: #fff;
+}
+.sp-band-name .sp-by { font-size: 0.85rem; }
+.sp-recipient .min-vh-100 { min-height: calc(100vh - 49px) !important; }
+.sp-reveal { min-height: calc(100vh - 49px); padding: 2rem 0; }
+.sp-card {
+  max-width: 520px;
+  width: 100%;
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(13, 65, 75, 0.12);
+}
+[data-bs-theme="dark"] .sp-card {
+  background: var(--bs-tertiary-bg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.sp-lock {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--sp-aqua-ink);
+  background: rgba(43, 171, 181, 0.12);
+}
+.payload {
+  border-color: var(--sp-aqua) !important;
+}

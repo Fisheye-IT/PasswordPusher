@@ -1,11 +1,19 @@
-<div class="container h-100">
-  <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-    <p>
-      <%= link_to _("Click Here to Proceed"), @secret_url,
-        "data-turbo-prefetch": false,
-        "data-turbolinks": false,
-        "data-turbo": false,
-        rel: "no-prefetch" %>
-    </p>
+<%# SafePass: branded reveal step instead of a bare link. Same link and turbo/prefetch guards as upstream. %>
+<div class="container">
+  <div class="d-flex flex-column sp-reveal justify-content-center align-items-center">
+    <div class="card sp-card text-center">
+      <div class="card-body p-4 p-md-5">
+        <div class="sp-lock mb-3"><em class="bi bi-shield-lock"></em></div>
+        <h1 class="h4 mb-2"><%= _("You've been sent a secure message") %></h1>
+        <p class="text-muted mb-4"><%= _("It can only be viewed a limited number of times before it is deleted. Open it when you are ready to save it somewhere safe.") %></p>
+        <%= link_to @secret_url, class: "btn btn-primary btn-lg px-4",
+          "data-turbo-prefetch": false,
+          "data-turbolinks": false,
+          "data-turbo": false,
+          rel: "no-prefetch" do %>
+          <em class="bi bi-eye me-1"></em> <%= _("Show the message") %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

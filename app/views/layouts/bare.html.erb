@@ -27,7 +27,8 @@
   <%= tag.meta name: 'turbo-drive-enabled', content: ENV.key?('TURBO_DRIVE_ENABLED') ? ENV['TURBO_DRIVE_ENABLED'].to_s.downcase : true %>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 sp-recipient">
+<%= render partial: "shared/recipient_band" %>
 
 <div class="container-fluid m-0 p-0">
   <%= yield %>
