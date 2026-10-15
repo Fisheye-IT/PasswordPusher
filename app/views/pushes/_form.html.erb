@@ -214,11 +214,12 @@
                     <div class="form-text"><%= _('Encrypted and visible only to you') %></div>
                 </div>
             <% end %>
-            <div class="border rounded-3 p-3">
-                <div class='small text-muted'>
-                    <p class="mb-2"><em class="bi bi-shield-check me-1"></em><%= _('Tip: Only enter a password into the box. Other identifying information can compromise security.') %></p>
-                    <p class="mb-0"><%= _('All passwords are encrypted prior to storage and are available to only those with the secret link. Once expired, encrypted passwords are unequivocally deleted from the database.') %></p>
-                </div>
+            <%# SafePass: "what is this" panel beside the options, so the password box stays first on the page. %>
+            <div class="border rounded-3 p-3 sp-what">
+                <h2 class="h6 mb-2"><em class="bi bi-shield-lock me-1"></em><%= _('What is SafePass?') %></h2>
+                <p class="small mb-2"><%= _('A free way for anyone to send a password or other sensitive information. Paste it in the box, choose how long the link lasts, then send the link instead of the password. When it expires, it is deleted for good.') %></p>
+                <p class="small text-muted mb-2"><%= _('Tip: only put the password itself in the box. Send the username or what it is for separately.') %></p>
+                <%= link_to page_path('about'), class: "small fw-semibold text-decoration-none" do %><%= _('More info') %> <em class="bi bi-arrow-right"></em><% end %>
             </div>
         </div>
     </div>

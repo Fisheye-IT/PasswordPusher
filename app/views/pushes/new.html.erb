@@ -1,7 +1,6 @@
 <%= content_for :title, _('Securely Send a Password, Text or File') %>
 
 <% if @text_tab %>
-  <div class="container"><%= render "shared/sp_intro" %></div>
   <%= render "form", push: @push %>
 <% elsif @files_tab %>
   <%= render "files_form", push: @push %>
