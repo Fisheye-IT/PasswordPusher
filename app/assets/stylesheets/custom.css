@@ -222,7 +222,7 @@ html[data-bs-theme="dark"] .sp-card {
 :root:not([data-bs-theme="dark"]) .sp-card {
   background-color: #fff;
 }
-html[data-bs-theme="dark"] form .border.rounded-3 { background-color: var(--bs-tertiary-bg); }
+html[data-bs-theme="dark"] form .border.rounded-3 { background-color: var(--pwp-surface-1); }
 
 .btn-outline-primary {
   --bs-btn-color: var(--sp-teal);
