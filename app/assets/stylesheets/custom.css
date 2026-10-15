@@ -196,3 +196,31 @@ textarea.form-control { background-color: #fff; }
 .payload {
   border-color: var(--sp-aqua) !important;
 }
+
+/* Surfaces: white panels on the mist background (light mode) */
+[data-bs-theme="light"] .card,
+[data-bs-theme="light"] .sp-card,
+[data-bs-theme="light"] form .border.rounded-3,
+:root:not([data-bs-theme="dark"]) .sp-card {
+  background-color: #fff;
+}
+[data-bs-theme="dark"] form .border.rounded-3 { background-color: var(--bs-tertiary-bg); }
+
+.btn-outline-primary {
+  --bs-btn-color: var(--sp-teal);
+  --bs-btn-border-color: var(--sp-teal);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--sp-teal);
+  --bs-btn-hover-border-color: var(--sp-teal);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--sp-teal-deep);
+  --bs-btn-active-border-color: var(--sp-teal-deep);
+  --bs-btn-focus-shadow-rgb: 43, 171, 181;
+}
+[data-bs-theme="dark"] .btn-outline-primary {
+  --bs-btn-color: var(--sp-aqua);
+  --bs-btn-border-color: var(--sp-aqua);
+  --bs-btn-hover-color: #062227;
+  --bs-btn-hover-bg: var(--sp-aqua);
+  --bs-btn-hover-border-color: var(--sp-aqua);
+}
