@@ -259,3 +259,26 @@ html[data-bs-theme="dark"] .payload.bg-white {
 .sp-list li { margin-bottom: 0.35rem; }
 .sp-list li::marker { color: var(--sp-aqua-ink); font-weight: 700; }
 html[data-bs-theme="dark"] .sp-list li::marker { color: var(--sp-aqua); }
+
+/* Main page intro */
+.sp-intro p { line-height: 1.6; }
+.sp-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.sp-steps li:last-child { margin-bottom: 0; }
+.sp-step-num {
+  flex: 0 0 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  background: var(--sp-teal);
+}
+.sp-steps li > span:last-child { padding-top: 0.25rem; }
+html[data-bs-theme="dark"] .sp-step-num { background: var(--sp-aqua); color: #062227; }
