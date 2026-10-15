@@ -251,3 +251,11 @@ html[data-bs-theme="dark"] .payload.bg-white {
   background-color: var(--pwp-surface-1) !important;
   color: var(--pwp-text-strong);
 }
+
+/* About page */
+.sp-about { max-width: none; }
+.sp-about p, .sp-about li { line-height: 1.65; }
+.sp-list { padding-left: 1.4rem; margin-bottom: 1rem; }
+.sp-list li { margin-bottom: 0.35rem; }
+.sp-list li::marker { color: var(--sp-aqua-ink); font-weight: 700; }
+html[data-bs-theme="dark"] .sp-list li::marker { color: var(--sp-aqua); }

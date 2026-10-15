@@ -9,6 +9,7 @@
           &copy; <%= Time.now.year %>
           <%= link_to "Fisheye IT", "https://www.fisheye.nz", target: "_blank", rel: "noopener noreferrer", class: "text-muted text-decoration-none" %>
           <% if Settings.show_version %>&middot; v<%= Version.current %><% end %>
+          &middot; <%= link_to _('About'), page_path('about'), class: "text-decoration-none" %>
         </span>
       </div>
 
