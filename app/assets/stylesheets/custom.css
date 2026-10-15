@@ -242,3 +242,12 @@ html[data-bs-theme="dark"] .btn-outline-primary {
   --bs-btn-hover-bg: var(--sp-aqua);
   --bs-btn-hover-border-color: var(--sp-aqua);
 }
+
+/* Dark mode: slider tracks were the same colour as their panel, and the secret
+   sat in a white box (upstream hard-codes .bg-white on the payload). */
+html[data-bs-theme="dark"] .form-range::-webkit-slider-runnable-track { background-color: var(--pwp-surface-3); }
+html[data-bs-theme="dark"] .form-range::-moz-range-track { background-color: var(--pwp-surface-3); }
+html[data-bs-theme="dark"] .payload.bg-white {
+  background-color: var(--pwp-surface-1) !important;
+  color: var(--pwp-text-strong);
+}
