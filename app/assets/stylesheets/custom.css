@@ -261,6 +261,7 @@ html[data-bs-theme="dark"] .payload.bg-white {
 html[data-bs-theme="dark"] .sp-list li::marker { color: var(--sp-aqua); }
 
 /* Main page intro */
+.sp-card.sp-intro { max-width: none; }
 .sp-intro p { line-height: 1.6; }
 .sp-steps li {
   display: flex;
